@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_tests/counter/bloc/counter_bloc.dart';
 import 'package:flutter_tests/counter/bloc/counter_observer.dart';
 
-import 'counter/page/counter.dart';
+import 'stopwatch/countdown/page/countdown.dart';
 
 void main() {
   Bloc.observer = CounterObserver();
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider(
         create: (BuildContext context) => CounterBloc(),
-        child: MyHomePage(),
+        child: CountdownPage(),
       ),
     );
   }
