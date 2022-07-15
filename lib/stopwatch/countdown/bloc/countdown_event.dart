@@ -7,7 +7,7 @@ abstract class CountdownEvent {
 
 class StartCountdown extends CountdownEvent {
   final int duration;
-  const StartCountdown(this.duration);
+  const StartCountdown({@required this.duration});
   @override
   String toString() => "StartCountdown{duration: $duration}";
 }
@@ -32,10 +32,11 @@ class LoadCountdown extends CountdownEvent {
   String toString() => "LoadCountdown";
 }
 
-class Tick extends CounterEvent {
+class Tick extends CountdownEvent {
   final int duration;
+  const Tick({@required this.duration});
 
-  const Tick(this.duration);
+  List<Object> get props => [duration];
   @override
   String toString() => "Tick {duration: $duration}";
 }

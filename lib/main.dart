@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_tests/counter/bloc/counter_bloc.dart';
-import 'package:flutter_tests/counter/bloc/counter_observer.dart';
+// import 'package:flutter_tests/counter/bloc/counter_bloc.dart';
+import 'package:flutter_tests/stopwatch/countdown/bloc/countdown_bloc.dart';
+import 'package:flutter_tests/stopwatch/countdown/ticker.dart';
 
 import 'stopwatch/countdown/page/countdown.dart';
 
 void main() {
-  Bloc.observer = CounterObserver();
+  //Bloc.observer = CounterObserver();
   runApp(MyApp());
 }
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: BlocProvider(
-        create: (BuildContext context) => CounterBloc(),
+        create: (BuildContext context) => CountdownBloc(ticker: Ticker()),
         child: CountdownPage(),
       ),
     );

@@ -2,46 +2,47 @@ part of 'countdown_bloc.dart';
 
 @immutable
 abstract class CountdownState {
-  // final int duration;
-  const CountdownState();
-
-  //  List<Object> get props => [this.duration];
+  final int duration;
+  const CountdownState(this.duration);
+  List<Object> get props => [duration];
 }
 
 class RedyCountdownState extends CountdownState {
-  // RedyCountdownState(int duration) : super(duration);
-  //static const countDuration = Duration(minutes: 5);
+  const RedyCountdownState(int duration) : super(duration);
   // final int duration;
   // const RedyCountdownState(this.duration);
-
   // @override
   // String toString() => "RedyCountdownState $duration";
 }
 
 class PausedCountdownState extends CountdownState {
-  // PausedCountdownState(int duration) : super(duration);
+  const PausedCountdownState(int duration) : super(duration);
 
-  @override
-  String toString() => "PausedCountdownState";
+  // final int duration;
+  // const PausedCountdownState(this.duration);
+  // @override
+  // String toString() => "PausedCountdownState $duration";
 }
 
 class RunningCountdownState extends CountdownState {
-  final int duration;
-  const RunningCountdownState(this.duration);
-  @override
-  String toString() => "RunningCountdownState $duration";
+  const RunningCountdownState(int duration) : super(duration);
+
+  // final int duration;
+  // const RunningCountdownState(this.duration);
+  // @override
+  // String toString() => "RunningCountdownState $duration";
 }
 
 class FinishedCountdownState extends CountdownState {
-  // FinishedCountdownState(int duration) : super(0);
+  const FinishedCountdownState(int duration) : super(0);
 
-  @override
-  String toString() => "FinishedCountdownState";
+  // @override
+  // String toString() => "FinishedCountdownState";
 }
 
-class ErrorCountdownState extends CountdownState {
-  final String error;
-  const ErrorCountdownState(this.error);
-  @override
-  String toString() => "ErrorCountdownState $error";
-}
+// class ErrorCountdownState extends CountdownState {
+//   final String error;
+//   const ErrorCountdownState(this.error);
+//   @override
+//   String toString() => "ErrorCountdownState $error";
+// }
