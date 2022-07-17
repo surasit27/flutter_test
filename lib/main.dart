@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: BlocProvider(
-        create: (BuildContext context) => CountdownBloc(ticker: Ticker()),
+        create: (context) => CountdownBloc(ticker: Ticker()),
         child: CountdownPage(),
       ),
     );

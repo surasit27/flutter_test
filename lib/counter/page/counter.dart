@@ -8,13 +8,13 @@ class MyHomePage extends StatelessWidget implements SaveCounterDelegate {
   var _context;
   @override
   void onError(String message) {
-    // TODO: implement onError
+   
     showAlertDialog(message);
   }
 
   @override
   void onSuccess(String message) {
-    // TODO: implement onSuccess
+   
     showAlertDialog(message);
   }
 

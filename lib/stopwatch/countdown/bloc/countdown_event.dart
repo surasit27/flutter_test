@@ -3,6 +3,8 @@ part of 'countdown_bloc.dart';
 @immutable
 abstract class CountdownEvent {
   const CountdownEvent();
+  @override
+  List<Object> get props => [];
 }
 
 class StartCountdown extends CountdownEvent {
@@ -27,15 +29,10 @@ class ResetCountdown extends CountdownEvent {
   String toString() => "ResumeCountdown";
 }
 
-class LoadCountdown extends CountdownEvent {
-  @override
-  String toString() => "LoadCountdown";
-}
-
 class Tick extends CountdownEvent {
   final int duration;
   const Tick({@required this.duration});
-
+  @override
   List<Object> get props => [duration];
   @override
   String toString() => "Tick {duration: $duration}";

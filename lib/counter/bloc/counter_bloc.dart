@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:flutter_tests/stopwatch/countdown/ticker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'counter_event.dart';
@@ -8,7 +7,7 @@ part 'counter_state.dart';
 const PREF_COUNT = "";
 
 class CounterBloc extends Bloc<CounterEvent, CounterState> {
-  CounterBloc({Ticker ticker}) : super(CounterInitialState());
+  CounterBloc() : super(CounterInitialState());
 
   @override
   Stream<CounterState> mapEventToState(

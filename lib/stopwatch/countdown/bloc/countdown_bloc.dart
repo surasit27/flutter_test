@@ -9,14 +9,24 @@ part 'countdown_state.dart';
 
 class CountdownBloc extends Bloc<CountdownEvent, CountdownState> {
   // CountdownBloc(this._ticker) : super(RedyCountdownState());
+
+  final int _duration = 300;
+  final Ticker _ticker;
+  StreamSubscription<int> _timerSubscription;
+
   CountdownBloc({@required Ticker ticker})
       : _ticker = ticker,
-        super(null);
+        assert(ticker != null),
+        super(RedyCountdownState(300));
 
-  final int _duration = 60;
-  final Ticker _ticker;
-  StreamSubscription _timerSubscription;
+  @override
   CountdownState get initialState => RedyCountdownState(_duration);
+
+  @override
+  void onTransition(Transition<CountdownEvent, CountdownState> transition) {
+    super.onTransition(transition);
+    print(transition);
+  }
 
   @override
   Stream<CountdownState> mapEventToState(CountdownEvent event) async* {
@@ -34,15 +44,12 @@ class CountdownBloc extends Bloc<CountdownEvent, CountdownState> {
   }
 
   Stream<CountdownState> _mapStartcountdownTostate(
-      StartCountdown event) async* {
-    StartCountdown startCountdown = event;
-    yield RunningCountdownState(startCountdown.duration);
-    print(startCountdown.duration);
+      StartCountdown start) async* {
+    yield RunningCountdownState(start.duration);
     _timerSubscription?.cancel();
-    _timerSubscription =
-        _ticker.tick(ticks: startCountdown.duration).listen((duration) {
-      add(Tick(duration: duration));
-    });
+    _timerSubscription = _ticker
+        .tick(ticks: start.duration)
+        .listen((duration) => add(Tick(duration: duration)));
   }
 
   Stream<CountdownState> _mapPausecountdownTostate(
@@ -69,11 +76,11 @@ class CountdownBloc extends Bloc<CountdownEvent, CountdownState> {
     //yield timer?.cancel();
   }
 
-  Stream<CountdownState> _mapTickcountdownTostate(Tick event) async* {
-    Tick tick = event;
+  Stream<CountdownState> _mapTickcountdownTostate(Tick tick) async* {
+    // Tick tick = event;
     yield tick.duration > 0
         ? RunningCountdownState(tick.duration)
-        : FinishedCountdownState(tick.duration);
+        : FinishedCountdownState();
   }
 
   @override
