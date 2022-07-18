@@ -27,24 +27,27 @@ class _CountdownPageState extends State<CountdownPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: BlocBuilder<CountdownBloc, CountdownState>(
-                builder: (context, state) {
-              final String minutesSection = ((state.duration / 60) % 60)
-                  .floor()
-                  .toString()
-                  .padLeft(2, '0');
-              final String secondsSection =
-                  (state.duration % 60).floor().toString().padLeft(2, '0');
-              return Text(
-                '$minutesSection m : $secondsSection s',
-                style: TextStyle(
-                  fontSize: 70,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              );
-            }),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: BlocBuilder<CountdownBloc, CountdownState>(
+                  builder: (context, state) {
+                final String minutesSection = ((state.duration / 60) % 60)
+                    .floor()
+                    .toString()
+                    .padLeft(2, '0');
+                final String secondsSection =
+                    (state.duration % 60).floor().toString().padLeft(2, '0');
+                return Text(
+                  '$minutesSection m : $secondsSection s',
+                  style: TextStyle(
+                    fontSize: 60,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              }),
+            ),
           ),
           SizedBox(
             height: 20,
