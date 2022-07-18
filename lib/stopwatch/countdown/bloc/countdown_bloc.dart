@@ -19,8 +19,8 @@ class CountdownBloc extends Bloc<CountdownEvent, CountdownState> {
         assert(ticker != null),
         super(RedyCountdownState(300));
 
-  @override
-  CountdownState get initialState => RedyCountdownState(_duration);
+  // @override
+  // CountdownState get initialState => RedyCountdownState(_duration);
 
   @override
   void onTransition(Transition<CountdownEvent, CountdownState> transition) {

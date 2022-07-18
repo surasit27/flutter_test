@@ -13,7 +13,7 @@ class _CountdownPageState extends State<CountdownPage> {
   @override
   void initState() {
     countdownBloc = BlocProvider.of<CountdownBloc>(context);
-    countdownBloc.add(StartCountdown(duration: 300));
+    // countdownBloc.add(StartCountdown(duration: 300));
     super.initState();
   }
 
@@ -46,84 +46,9 @@ class _CountdownPageState extends State<CountdownPage> {
               );
             }),
           ),
-          // BlocBuilder<CountdownBloc, CountdownState>(
-          //   builder: (context, state) {
-          //     if (state is RedyCountdownState) {
-          //       return TextButton(
-          //           onPressed: () {
-          //             countdownBloc
-          //                 .add(StartCountdown(duration: state.duration));
-          //           },
-          //           child: Text(
-          //             "START",
-          //             style: TextStyle(fontSize: 22),
-          //           ));
-          //     }
-          //     if (state is PausedCountdownState) {
-          //       return Row(
-          //         children: [
-          //           TextButton(
-          //               onPressed: () {
-          //                 countdownBloc.add(ResumeCountdown());
-          //               },
-          //               child: Text(
-          //                 "PAUSEs",
-          //                 style: TextStyle(fontSize: 22),
-          //               )),
-          //           TextButton(
-          //               onPressed: () {
-          //                 countdownBloc.add(ResetCountdown());
-          //               },
-          //               child: Text(
-          //                 "RESET",
-          //                 style: TextStyle(fontSize: 22),
-          //               ))
-          //         ],
-          //       );
-          //     }
-          //     if (state is PausedCountdownState) {
-          //       return Row(
-          //         children: [
-          //           TextButton(
-          //               onPressed: () {
-          //                 countdownBloc.add(ResumeCountdown());
-          //               },
-          //               child: Text(
-          //                 "RESUME",
-          //                 style: TextStyle(fontSize: 22),
-          //               )),
-          //           TextButton(
-          //               onPressed: () {
-          //                 countdownBloc.add(ResetCountdown());
-          //               },
-          //               child: Text(
-          //                 "RESET",
-          //                 style: TextStyle(fontSize: 22),
-          //               ))
-          //         ],
-          //       );
-          //     }
-          //     if (state is FinishedCountdownState) {
-          //       return TextButton(
-          //           onPressed: () {
-          //             countdownBloc.add(ResetCountdown());
-          //           },
-          //           child: Text(
-          //             "REPLAY",
-          //             style: TextStyle(fontSize: 22),
-          //           ));
-          //     }
-          // return Column(
-          //   mainAxisAlignment: MainAxisAlignment.center,
-          //   children: [
-          //     const Center(
-          //       child: CircularProgressIndicator(),
-          //     ),
-          //   ],
-          // );
-          //},
-          //)
-
+          SizedBox(
+            height: 20,
+          ),
           BlocBuilder<CountdownBloc, CountdownState>(
               builder: ((context, state) => Actions()))
         ],
@@ -216,3 +141,80 @@ class Actions extends StatelessWidget {
     return [];
   }
 }
+// BlocBuilder<CountdownBloc, CountdownState>(
+          //   builder: (context, state) {
+          //     if (state is RedyCountdownState) {
+          //       return TextButton(
+          //           onPressed: () {
+          //             countdownBloc
+          //                 .add(StartCountdown(duration: state.duration));
+          //           },
+          //           child: Text(
+          //             "START",
+          //             style: TextStyle(fontSize: 22),
+          //           ));
+          //     }
+          //     if (state is PausedCountdownState) {
+          //       return Row(
+          //         children: [
+          //           TextButton(
+          //               onPressed: () {
+          //                 countdownBloc.add(ResumeCountdown());
+          //               },
+          //               child: Text(
+          //                 "PAUSEs",
+          //                 style: TextStyle(fontSize: 22),
+          //               )),
+          //           TextButton(
+          //               onPressed: () {
+          //                 countdownBloc.add(ResetCountdown());
+          //               },
+          //               child: Text(
+          //                 "RESET",
+          //                 style: TextStyle(fontSize: 22),
+          //               ))
+          //         ],
+          //       );
+          //     }
+          //     if (state is PausedCountdownState) {
+          //       return Row(
+          //         children: [
+          //           TextButton(
+          //               onPressed: () {
+          //                 countdownBloc.add(ResumeCountdown());
+          //               },
+          //               child: Text(
+          //                 "RESUME",
+          //                 style: TextStyle(fontSize: 22),
+          //               )),
+          //           TextButton(
+          //               onPressed: () {
+          //                 countdownBloc.add(ResetCountdown());
+          //               },
+          //               child: Text(
+          //                 "RESET",
+          //                 style: TextStyle(fontSize: 22),
+          //               ))
+          //         ],
+          //       );
+          //     }
+          //     if (state is FinishedCountdownState) {
+          //       return TextButton(
+          //           onPressed: () {
+          //             countdownBloc.add(ResetCountdown());
+          //           },
+          //           child: Text(
+          //             "REPLAY",
+          //             style: TextStyle(fontSize: 22),
+          //           ));
+          //     }
+          // return Column(
+          //   mainAxisAlignment: MainAxisAlignment.center,
+          //   children: [
+          //     const Center(
+          //       child: CircularProgressIndicator(),
+          //     ),
+          //   ],
+          // );
+          //},
+          //)

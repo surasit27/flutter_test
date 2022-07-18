@@ -9,8 +9,6 @@ abstract class StoptimerState {
   List<Object> get props => [duration];
 }
 
-
-
 class RedyStoptimerState extends StoptimerState {
   const RedyStoptimerState(int duration) : super(duration);
 

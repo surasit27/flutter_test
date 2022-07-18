@@ -29,9 +29,9 @@ class ResetStoptimer extends StoptimerEvent {
   String toString() => "ResetStoptimer";
 }
 
-class Tick extends StoptimerEvent {
+class TickStopwatch extends StoptimerEvent {
   final int duration;
-  const Tick({@required this.duration});
+  const TickStopwatch({@required this.duration});
   @override
   List<Object> get props => [duration];
   @override

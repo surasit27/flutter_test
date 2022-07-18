@@ -1,20 +1,23 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_tests/stopwatch/stoptimer/page/ticker.dart';
+import 'package:flutter_tests/stopwatch/stoptimer/page/tickerstopwach.dart';
 import 'package:meta/meta.dart';
 
 part 'stoptimer_event.dart';
 part 'stoptimer_state.dart';
 
 class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
-  final int _duration = 0;
-  final Ticker _ticker;
+  final int _duration = 1;
+  final TickerStopWatch _tickerStopWatch;
   StreamSubscription<int> _timerSubscription;
-  StoptimerBloc({@required Ticker ticker})
-      : _ticker = ticker,
-        assert(ticker != null),
-        super(RedyStoptimerState(0));
+  StoptimerBloc(
+      {@required TickerStopWatch tickerStopWatch,
+      TickerStopWatch tickStopatch,
+      TickerStopWatch ticker})
+      : _tickerStopWatch = tickerStopWatch,
+        // assert(tickerStopWatch != null),
+        super(RedyStoptimerState(1));
 
   @override
   StoptimerState get initialState => RedyStoptimerState(_duration);
@@ -34,7 +37,7 @@ class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
       yield* _mapResumeStoptimerTostate(event);
     } else if (event is ResetStoptimer) {
       yield* _mapResetStoptimerTostate(event);
-    } else if (event is Tick) {
+    } else if (event is TickStopwatch) {
       yield* _mapTickStoptimerTostate(event);
     }
   }
@@ -42,9 +45,9 @@ class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
   Stream<StoptimerState> _mapStoptimerTostate(StartStoptimer start) async* {
     yield RunningStoptimerState(start.duration);
     _timerSubscription?.cancel();
-    _timerSubscription = _ticker
+    _timerSubscription = _tickerStopWatch
         .tick(ticks: start.duration)
-        .listen((duration) => add(Tick(duration: duration)));
+        .listen((duration) => add(TickStopwatch(duration: duration)));
   }
 
   Stream<StoptimerState> _mapPauseStoptimerTostate(
@@ -71,10 +74,11 @@ class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
     //yield timer?.cancel();
   }
 
-  Stream<StoptimerState> _mapTickStoptimerTostate(Tick tick) async* {
+  Stream<StoptimerState> _mapTickStoptimerTostate(
+      TickStopwatch tickStopwatch) async* {
     // Tick tick = event;
-    yield tick.duration > 0
-        ? RunningStoptimerState(tick.duration)
+    yield tickStopwatch.duration > 0
+        ? RunningStoptimerState(tickStopwatch.duration)
         : FinishedStoptimerState();
   }
 
