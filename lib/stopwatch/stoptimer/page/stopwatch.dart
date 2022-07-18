@@ -23,36 +23,39 @@ class _StopWatchPageState extends State<StopWatchPage> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Center(
-            child: BlocBuilder<StoptimerBloc, StoptimerState>(
-                builder: (context, state) {
-              // final String minutesSection = ((state.duration % 60) / 60)
-              //     .floor()
-              //     .toString()
-              //     .padLeft(2, '0');
-              // final String secondsSection =
-              //     (state.duration % 60).floor().toString().padLeft(2, '0');
-              // final String minutesSection =
-              //     ((state.duration / (1000 * 60)) % 60)
-              //         .floor()
-              //         .toString()
-              //         .padLeft(2, '0');
-              final String secondsSection = ((state.duration / 1000) % 60)
-                  .floor()
-                  .toString()
-                  .padLeft(2, '0');
-              final String millisecondSection =
-                  (state.duration % 1000).floor().toString().padLeft(3, '0');
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(
+              child: BlocBuilder<StoptimerBloc, StoptimerState>(
+                  builder: (context, state) {
+                // final String minutesSection = ((state.duration % 60) / 60)
+                //     .floor()
+                //     .toString()
+                //     .padLeft(2, '0');
+                // final String secondsSection =
+                //     (state.duration % 60).floor().toString().padLeft(2, '0');
+                // final String minutesSection =
+                //     ((state.duration / (1000 * 60)) % 60)
+                //         .floor()
+                //         .toString()
+                //         .padLeft(2, '0');
+                final String secondsSection = ((state.duration / 1000) % 60)
+                    .floor()
+                    .toString()
+                    .padLeft(2, '0');
+                final String millisecondSection =
+                    (state.duration % 1000).floor().toString().padLeft(3, '0');
 
-              return Text(
-                '$secondsSection s : $millisecondSection ms',
-                style: TextStyle(
-                  fontSize: 60,
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              );
-            }),
+                return Text(
+                  '$secondsSection s : $millisecondSection ms',
+                  style: TextStyle(
+                    fontSize: 50,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                );
+              }),
+            ),
           ),
           BlocBuilder<StoptimerBloc, StoptimerState>(
               builder: ((context, state) => ActionStopwatch()))

@@ -41,7 +41,7 @@ class _CountdownPageState extends State<CountdownPage> {
                 return Text(
                   '$minutesSection m : $secondsSection s',
                   style: TextStyle(
-                    fontSize: 60,
+                    fontSize: 50,
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
                   ),
