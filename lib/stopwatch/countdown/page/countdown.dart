@@ -37,7 +37,7 @@ class _CountdownPageState extends State<CountdownPage> {
               final String secondsSection =
                   (state.duration % 60).floor().toString().padLeft(2, '0');
               return Text(
-                '$minutesSection : $secondsSection',
+                '$minutesSection m : $secondsSection s',
                 style: TextStyle(
                   fontSize: 70,
                   color: Colors.black,

@@ -8,7 +8,7 @@ part 'stoptimer_event.dart';
 part 'stoptimer_state.dart';
 
 class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
-  final int _duration = 1;
+  final int _duration = 300;
   final TickerStopWatch _tickerStopWatch;
   StreamSubscription<int> _timerSubscription;
   StoptimerBloc(
@@ -17,10 +17,10 @@ class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
       TickerStopWatch ticker})
       : _tickerStopWatch = tickerStopWatch,
         // assert(tickerStopWatch != null),
-        super(RedyStoptimerState(1));
+        super(RedyStoptimerState(300));
 
-  @override
-  StoptimerState get initialState => RedyStoptimerState(_duration);
+  // @override
+  // StoptimerState get initialState => RedyStoptimerState(_duration);
   @override
   void onTransition(Transition<StoptimerEvent, StoptimerState> transition) {
     super.onTransition(transition);

@@ -26,7 +26,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
           Center(
             child: BlocBuilder<StoptimerBloc, StoptimerState>(
                 builder: (context, state) {
-              final String minutesSection = ((state.duration / 60) % 60)
+              final String minutesSection = ((state.duration % 60) / 60)
                   .floor()
                   .toString()
                   .padLeft(2, '0');
@@ -36,7 +36,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
               //     (state.duration % 1000).floor().toString().padLeft(3, '0');
 
               return Text(
-                '$minutesSection :$secondsSection',
+                '$minutesSection m : $secondsSection s ',
                 style: TextStyle(
                   fontSize: 70,
                   color: Colors.black,
