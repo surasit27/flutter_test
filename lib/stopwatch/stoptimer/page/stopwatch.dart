@@ -44,7 +44,7 @@ class _StopWatchPageState extends State<StopWatchPage> {
                     .toString()
                     .padLeft(2, '0');
                 final String millisecondSection =
-                    (state.duration % 1000).floor().toString().padLeft(3, '0');
+                    (state.duration % 100).floor().toString().padLeft(3, '0');
 
                 return Text(
                   '$secondsSection s : $millisecondSection ms',

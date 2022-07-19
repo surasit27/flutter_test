@@ -8,7 +8,7 @@ part 'stoptimer_event.dart';
 part 'stoptimer_state.dart';
 
 class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
-  final int _duration = 300000;
+  final int _duration = 60000;
   final TickerStopWatch _tickerStopWatch;
   StreamSubscription<int> _timerSubscription;
   StoptimerBloc(
@@ -17,7 +17,7 @@ class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
       TickerStopWatch ticker})
       : _tickerStopWatch = tickerStopWatch,
         // assert(tickerStopWatch != null),
-        super(RedyStoptimerState(300000));
+        super(RedyStoptimerState(60000));
 
   // @override
   // StoptimerState get initialState => RedyStoptimerState(_duration);
@@ -42,14 +42,12 @@ class StoptimerBloc extends Bloc<StoptimerEvent, StoptimerState> {
     }
   }
 
-  
-
   Stream<StoptimerState> _mapStarttimerTostate(StartStoptimer start) async* {
     yield RunningStoptimerState(start.duration);
     _timerSubscription?.cancel();
     _timerSubscription = _tickerStopWatch
         .tick(ticks: start.duration)
-        .listen((duration) => add(TickStopwatch(duration: duration )));
+        .listen((duration) => add(TickStopwatch(duration: duration)));
   }
 
   Stream<StoptimerState> _mapPauseStoptimerTostate(
